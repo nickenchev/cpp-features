@@ -21,5 +21,5 @@ target_link_options(addresssanitizer PRIVATE -fsanitize=address)
 
 # Constexpr If
 add_executable(constexprif
-  src/constexprif.cpp)
+  src/ifconstexpr/main.cpp)
 
