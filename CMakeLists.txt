@@ -16,6 +16,10 @@ add_executable(variadictemplates
 add_executable(addresssanitizer
   src/addresssanitizer.cpp)
 
+# Valgrind memcheck
+add_executable(memcheck
+  src/valgrind/memcheck/main.cpp)
+
 target_compile_options(addresssanitizer PRIVATE -fsanitize=address)
 target_link_options(addresssanitizer PRIVATE -fsanitize=address)
 

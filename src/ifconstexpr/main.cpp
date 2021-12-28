@@ -1,30 +1,26 @@
 #include <iostream>
 
-template <int Mode>
-class Worker
+constexpr bool enableLogging = false;
+
+template <bool Mode>
+constexpr void doWork(int input)
 {
-public:
-	void doWork(int input)
+	if constexpr (Mode == 0)
 	{
-		int result = 0;
-		if constexpr (Mode == 0)
-		{
-			std::cout << input * 10 << std::endl;
-		}
-		else
-		{
-			std::cout << input * 100 << std::endl;
-		}
+		std::cout << input * input << std::endl;
 	}
-};
+	else
+	{
+		std::cout << input << std::endl;
+	}
+}
 	
 int main(int argc, char *argv[])
 {
-	Worker<0> worker1;
-	worker1.doWork(5);
+	
+	doWork<true>(5);
 
-	Worker<1> worker2;
-	worker2.doWork(5);
+	doWork<false>(5);
 
     return 0;
 }
