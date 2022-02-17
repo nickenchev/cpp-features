@@ -8,22 +8,9 @@ set(CMAKE_BUILD_TYPE Debug)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS on)
 
-# Variadic Templates
-add_executable(variadictemplates
-  src/variadictemplates.cpp)
-
-# Address Sanitizer
-add_executable(addresssanitizer
-  src/addresssanitizer.cpp)
-
-# Valgrind memcheck
-add_executable(memcheck
-  src/valgrind/memcheck/main.cpp)
-
-target_compile_options(addresssanitizer PRIVATE -fsanitize=address)
-target_link_options(addresssanitizer PRIVATE -fsanitize=address)
-
-# Constexpr If
-add_executable(constexprif
-  src/ifconstexpr/main.cpp)
-
+add_subdirectory(src/address-sanitizer)
+add_subdirectory(src/valgrind/memcheck)
+add_subdirectory(src/clang-tidy)
+add_subdirectory(src/ifconstexpr)
+add_subdirectory(src/aggregate-init)
+add_subdirectory(src/array)

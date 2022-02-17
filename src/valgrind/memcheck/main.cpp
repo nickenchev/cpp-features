@@ -1,4 +1,4 @@
-void doWork()
+void createLeak()
 {
 	int *mem = new int[10];
 
@@ -8,12 +8,20 @@ void doWork()
 	// ...
 	// ...
 	// forget to delete
-	//delete mem;
 	//delete [] mem;
+}
+
+void invalidRead()
+{
+	int *mem = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int num = mem[10];
+
+	delete [] mem;
 }
 
 int main(int argc, char *argv[])
 {
-	doWork();
+	createLeak();
+	invalidRead();
 	return 0;
 }
